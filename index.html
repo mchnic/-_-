@@ -1,0 +1,76 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Журнал</title>
+    <link rel="stylesheet" href="static/styles/style.css">
+    <script src="index.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.3/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<main>
+    <div class = "tabsHeader">
+        <button class = "tab" id = "upload" onclick="handleTabClicked(event)">Загрузка оценок</button>
+        <button class = "tab" id = "tab_stat" onclick="handleTabClicked(event)">Статистика (Таблицы)</button>
+        <button class = "tab" id = "graph_stat" onclick="handleTabClicked(event)">Статистика (Графики)</button>
+        <button class = "tab" id = "help" onclick="handleTabClicked(event)">Помощь</button>
+        <button class = "tab" id = "about" onclick="handleTabClicked(event)">О программе</button>
+    </div>
+
+    <div class="content upload active">
+        <h2>Вкладка для загрузки и редактирования оценок</h2>
+        <input type="file" id="fileInput" accept=".csv, .txt, .xls" onchange="handleFileUpload()">  
+        <!--<button onclick="handleFileUpload()" >Загрузить файл</button> -->
+        <button onclick="saveToFile()">Сохранить в файл</button>
+        <button id="addButton" onclick="addRow()">Добавить строку</button>
+
+        <table id="dataTable">
+            <!-- Таблица для отображения данных -->
+        </table>
+    </div>
+    
+
+    <div id="table-stats" class="content tab_stat">
+        <h2>Статистика табличная</h2>
+        <!-- Контейнер для таблиц статистики -->
+    </div>
+    
+    <div id="graph-stats" class="content graph_stat">
+        <h2>Статистика графическая</h2>
+        <!-- Контейнеры для графиков -->
+        <canvas id="class-chart" width="400" height="400"></canvas>
+        <canvas id="student-chart" width="400" height="400"></canvas>
+    </div>
+    
+
+    <div class="content help">
+        <h2>Помощь</h2>
+            <p>Пройдёмся по вкладкам и их функционалу:</p>
+            <h3>Загрузить оценки</h3>
+            <p>На этой вкладке вы можете загрузить файлы с оценками в форматах .csv, .txt или .xls. 
+                Для загрузки нажмите на кнопку "Выбрать файл для загрузки". После выбора файла он будет автоматически обработан и отображен в виде таблицы на странице.</p>
+            <p>+  можно добавлять и изменять записи оценок учеников.</p>
+            <h3>Таблицы статистика</h3>
+            <p>Здесь вы можете увидеть статистику по классам и предметам: средний балл, медиану оценок, количество и процентное распределение оценок по каждому предмету.</p>
+            <h3>Графики статистика</h3>
+            <p>Здесь представлена статистика в графическом виде и успеваемость учеников.</p>
+            <h3>О программе</h3>
+            <p>На этой вкладке содержится информация о разработчике, контактные данные и т.д....</p>
+    </div>
+
+    <div class="content about">
+        <h1>О программе</h1>
+            <p>РазработчикXD: </p>
+            <h4> Иванов Т.А. </h4>
+            <p>Контакты: </p> 
+            <p><a href="https://vk.com/timurivanov0">VK</a></p>
+            <img src="static/images/лекса.jpg" alt="Фото разработчика">
+    </div>
+</main>
+</body>
+</html>
